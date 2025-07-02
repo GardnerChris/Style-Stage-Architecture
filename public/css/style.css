@@ -1,0 +1,257 @@
+:root {
+  --color-background: #ae825c;
+  --color-secondary: #de3333;
+  --secondary-color: #855f31;
+  --color-primary: #ffffff;
+  --accent-color: #5a2f0b;
+}
+
+@keyframes slideStripe {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+header,
+footer.page-footer {
+  background-color: var(--secondary-color);
+  color: var(--color-primary);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+footer.page-footer {
+  background: linear-gradient(13deg, var(--accent-color) 0%, var(--secondary-color) 50%, var(--color-background) 100%);
+  color: var(--color-primary);
+  padding: 3rem 1.5rem 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+}
+footer.page-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--secondary-color) 0px, var(--secondary-color) 20px, var(--color-background) 20px, var(--color-background) 40px);
+  animation: slideStripe 3s linear infinite;
+}
+footer.page-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+footer.page-footer ul li {
+  background: linear-gradient(to right, var(--secondary-color) 0%, var(--accent-color) 15%, var(--accent-color) 85%, var(--secondary-color) 100%);
+  width: 120px;
+  height: 160px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3), inset 3px 0 0 rgba(255, 255, 255, 0.1);
+  transform: rotate(-8deg) translateY(0);
+  transition: all 0.4s ease;
+  position: relative;
+}
+footer.page-footer ul li:nth-child(even) {
+  background: linear-gradient(to right, var(--color-background) 0%, #8b4513 15%, #8b4513 85%, var(--color-background) 100%);
+  transform: rotate(1deg) translateY(0);
+}
+footer.page-footer ul li:nth-child(3n) {
+  background: linear-gradient(to right, var(--color-secondary) 0%, #b82a2a 15%, #b82a2a 85%, var(--color-secondary) 100%);
+  transform: rotate(-1deg) translateY(0);
+}
+footer.page-footer ul li:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.02);
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.4), inset 3px 0 0 rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+footer.page-footer ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem 0.5rem;
+  color: var(--color-primary);
+  background: none;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+footer.page-footer p {
+  background: rgba(244, 226, 216, 0.1);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+footer.page-footer p strong {
+  color: #f4e2d8;
+  font-weight: 700;
+}
+footer.page-footer p a {
+  color: #f4e2d8;
+  background: rgba(139, 69, 19, 0.4);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid rgba(139, 69, 19, 0.5);
+  transition: all 0.3s ease;
+}
+footer.page-footer p a:hover, footer.page-footer p a:focus {
+  background: var(--color-background);
+  border-color: var(--color-secondary);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  background-color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body a {
+  color: var(--color-primary);
+  background-color: var(--secondary-color);
+  padding: 0.2em 0.4em;
+  text-decoration: none;
+  border-radius: 4px;
+}
+body a:hover, body a:focus {
+  background-color: var(--accent-color);
+}
+
+main {
+  background-color: var(--color-background);
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1rem var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 2rem 0.5rem;
+    box-shadow: 0 0 0 0.5rem var(--color-primary);
+  }
+  header,
+  footer.page-footer {
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  main {
+    padding: 1.5rem 0.3rem;
+    box-shadow: 0 0 0 0.3rem var(--color-primary);
+  }
+}
+nav {
+  margin: 2rem auto;
+  width: max-content;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+nav li {
+  background: linear-gradient(to bottom right, #f4e2d8, #ba5370);
+  color: #fff;
+  margin-bottom: -12px;
+  padding: 1rem 1.5rem;
+  border: 2px solid #6d4c41;
+  transform: rotate(-1deg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: bold;
+  position: relative;
+}
+nav li:nth-child(odd) {
+  background: linear-gradient(to bottom right, #c9d6ff, #e2e2e2);
+  transform: rotate(1deg);
+}
+nav li a {
+  color: var(--color-primary);
+  text-decoration: none;
+  display: block;
+}
+nav li:hover {
+  transform: translateY(-4px) rotate(0deg);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);
+  z-index: 200;
+}
+
+#books {
+  padding: 2rem 1rem;
+  background-color: #fef9f3;
+  color: #333;
+  font-family: sans-serif;
+}
+#books h2 {
+  color: #8b4513;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+#books ul {
+  list-style: none;
+  padding: 0;
+}
+#books ul li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-left: 4px solid #8b4513;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.books-section {
+  text-align: center;
+}
+.books-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+.books-section .book-shelf {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+.books-section .book-shelf .book {
+  background-color: var(--secondary-color);
+  color: var(--color-primary);
+  padding: 1.5rem 1rem;
+  width: 100px;
+  height: 150px;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.books-section .book-shelf .book:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  background-color: var(--accent-color);
+}
