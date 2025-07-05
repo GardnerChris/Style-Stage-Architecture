@@ -18,17 +18,147 @@
 }
 
 // ========================
-// Footer Animations
+// Header- Trying to maintain library Theme
 // ========================
-@keyframes slideStripe {
-  0% {
-    background-position: 0 0;
+header {
+  background: linear-gradient(30deg, var(--accent-color) 0%, var(--secondary-color) 50%, var(--color-background) 100%);
+  color: var(--color-primary);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  // Loading transition animation
+  animation: fadeInSlideDown 1.2s ease-out;
+
+
+  
+  // Animated stripe effect like the footer.
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--secondary-color) 0px, var(--secondary-color) 20px, var(--color-background) 
+    20px, var(--color-background) 40px);
+    animation: slideStripe 3s linear infinite;
   }
-  100% {
-    background-position: 40px 0;
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    color: var(--color-primary);
+    position: relative;
+    
+
+    // shadow effect-similar to footer elements.
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background: linear-gradient(to right, var(--accent-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+      opacity: 0.3;
+      z-index: -1;
+      border-radius: 4px;
+    }
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    background: rgba(244, 226, 216, 0.15);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    line-height: 1.4;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    
+    // Load transition
+    animation: fadeInUp 1.5s ease-out 0.6s both;
+  }
+  
+  p {
+    background: rgba(244, 226, 216, 0.1);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0 2rem 0;
+    line-height: 1.6;
+    font-size: .9rem;
+    
+    // Load transition
+    animation: fadeInUp 1.5s ease-out 0.9s both;
+    
+    a {
+      color: #f4e2d8;
+      background: rgba(139, 69, 19, 0.4);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(139, 69, 19, 0.5);
+      transition: all 0.3s ease;
+      
+      &:hover,
+      &:focus {
+        background: var(--color-background);
+        border-color: var(--color-secondary);
+        transform: translateY(-1px) scale(1.05);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  // GitHub link styled like book on its side.
+  .link-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(to right, var(--secondary-color) 0%, var(--accent-color) 15%, var(--accent-color) 85%, var(--secondary-color) 100%);
+    color: var(--color-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3), inset 3px 0 0 rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+
+
+    
+    span {
+      display: flex;
+      align-items: center;
+    }
+    //styling and sizing the SVG star icon.    
+      svg {
+      width: 1.2em;
+      height: 1.2em;
+      fill: white;
+    }
+    
+    &:hover,
+    &:focus {
+      transform: rotate(0deg) translateY(-4px) scale(1.05);
+      box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.4), inset 3px 0 0 rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to right, var(--color-background) 0%, #8b4513 15%, #8b4513 85%, var(--color-background) 100%);
+    }
   }
 }
-
 // ========================
 // Header & Footer Styles
 // ========================
@@ -59,6 +189,7 @@ footer.page-footer {
     left: 0;
     right: 0;
     height: 8px;
+  //found out repeating-linear-gradient is a great way to create a stripe effect.
     background: repeating-linear-gradient(90deg,var(--secondary-color) 0px, var(--secondary-color) 20px,var(--color-background) 20px,var(--color-background) 40px);
     animation: slideStripe 3s linear infinite;
   }
@@ -74,7 +205,7 @@ footer.page-footer {
     gap: 0.5rem;
     flex-wrap: wrap;
     
-  // Book-like styling.
+  // Book-like styling. 
     li {
       background: linear-gradient(to right, var(--secondary-color) 0%, var(--accent-color) 15%, var(--accent-color) 85%, 
       var(--secondary-color) 100%);
@@ -119,7 +250,6 @@ footer.page-footer {
         text-transform: uppercase;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
-   
       }
     }
   }
@@ -158,6 +288,32 @@ footer.page-footer {
     }
   }
 }
+
+// ========================
+// Animations
+// ========================
+
+@keyframes slideStripe {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 // ========================
 //  Global Styles
 // ========================
