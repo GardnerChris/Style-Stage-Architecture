@@ -79,7 +79,6 @@ header p a {
   background: rgba(139, 69, 19, 0.4);
   padding: 0.2em 0.5em;
   border-radius: 4px;
-  text-decoration: none;
   border: 1px solid rgba(139, 69, 19, 0.5);
   transition: all 0.3s ease;
 }
@@ -184,7 +183,6 @@ footer.page-footer ul li a {
   padding: 1rem 0.5rem;
   color: var(--color-primary);
   background: none;
-  text-decoration: none;
   font-weight: 700;
   font-size: 0.8rem;
   text-align: center;
@@ -212,7 +210,6 @@ footer.page-footer p a {
   background: rgba(139, 69, 19, 0.4);
   padding: 0.2em 0.5em;
   border-radius: 4px;
-  text-decoration: none;
   border: 1px solid rgba(139, 69, 19, 0.5);
   transition: all 0.3s ease;
 }
@@ -266,7 +263,7 @@ footer.page-footer p a:hover, footer.page-footer p a:focus {
   }
 }
 @keyframes wiggle {
-  0%, 7% {
+  0% {
     transform: rotateZ(0deg) scale(1);
   }
   15% {

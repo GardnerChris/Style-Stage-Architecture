@@ -112,7 +112,6 @@ header {
       background: rgba(139, 69, 19, 0.4);
       padding: 0.2em 0.5em;
       border-radius: 4px;
-      text-decoration: none;
       border: 1px solid rgba(139, 69, 19, 0.5);
       transition: all 0.3s ease;
       
@@ -186,7 +185,6 @@ footer.page-footer {
   text-align: center;
   position: relative;
   
-  
 // Animated stripe effect.  
   &::before {
     content: '';
@@ -195,6 +193,7 @@ footer.page-footer {
     left: 0;
     right: 0;
     height: 8px;
+    
   //found out repeating-linear-gradient is a great way to create a stripe effect.
     background: repeating-linear-gradient(90deg,var(--secondary-color) 0px, var(--secondary-color) 20px,var(--color-background) 20px,var(--color-background) 40px);
     animation: slideStripe 3s linear infinite;
@@ -247,7 +246,6 @@ footer.page-footer {
         padding: 1rem 0.5rem;
         color: var(--color-primary);
         background: none;
-        text-decoration: none;
         font-weight: 700;
         font-size: 0.8rem;
         text-align: center;
@@ -280,7 +278,6 @@ footer.page-footer {
       background: rgba(139, 69, 19, 0.4);
       padding: 0.2em 0.5em;
       border-radius: 4px;
-      text-decoration: none;
       border: 1px solid rgba(139, 69, 19, 0.5);
       transition: all 0.3s ease;
       
@@ -343,8 +340,10 @@ footer.page-footer {
     transform: scale(1) rotate(-1deg);
   }
 }
+
+//Github link wiggle animation.
 @keyframes wiggle {
-  0%, 7% { transform: rotateZ(0deg) scale(1); }
+  0%  { transform: rotateZ(0deg) scale(1); }
   15% { transform: rotateZ(-3deg) scale(1.02); }
   20% { transform: rotateZ(5deg) scale(1.02); }
   25% { transform: rotateZ(-3deg) scale(1.02); }
