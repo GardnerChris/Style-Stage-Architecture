@@ -38,6 +38,7 @@ header h1 {
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   color: var(--color-primary);
   position: relative;
+  animation: fadeInUp 1.5s ease-out 0.3s both;
 }
 header h1::after {
   content: "";
@@ -101,6 +102,7 @@ header .link-github {
   text-transform: uppercase;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease;
+  animation: fadeInScale 1.8s ease-out 1.2s both, wiggle 2.3s ease-in-out 3.5s;
 }
 header .link-github span {
   display: flex;
@@ -112,7 +114,6 @@ header .link-github svg {
   fill: white;
 }
 header .link-github:hover, header .link-github:focus {
-  transform: rotate(0deg) translateY(-4px) scale(1.05);
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.4), inset 3px 0 0 rgba(255, 255, 255, 0.2);
   background: linear-gradient(to right, var(--color-background) 0%, #8b4513 15%, #8b4513 85%, var(--color-background) 100%);
 }
@@ -238,6 +239,56 @@ footer.page-footer p a:hover, footer.page-footer p a:focus {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-1deg);
+  }
+}
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0deg) scale(1);
+  }
+  15% {
+    transform: rotateZ(-3deg) scale(1.02);
+  }
+  20% {
+    transform: rotateZ(5deg) scale(1.02);
+  }
+  25% {
+    transform: rotateZ(-3deg) scale(1.02);
+  }
+  30% {
+    transform: rotateZ(5deg) scale(1.02);
+  }
+  35% {
+    transform: rotateZ(-2deg) scale(1.01);
+  }
+  40% {
+    transform: rotateZ(0deg) scale(1);
+  }
+  100% {
+    transform: rotateZ(-1deg) scale(1);
   }
 }
 body {
