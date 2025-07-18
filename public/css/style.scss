@@ -143,8 +143,6 @@ header {
  // Load transition, then wiggle after 3s to get attention
   animation: fadeInScale 1.8s ease-out 1.2s both, wiggle 2.3s ease-in-out 3.5s;
   
-  
-    
     span {
       display: flex;
       align-items: center;
@@ -153,7 +151,7 @@ header {
       svg {
       width: 1.2em;
       height: 1.2em;
-      fill: white;
+      fill: var(--color-primary);
     }
     
 
@@ -387,6 +385,91 @@ main {
   margin: 0 auto;
   box-shadow: 0 0 0 1rem var(--color-primary);
 }
+article {
+  section {
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+}
+// 1) ABOUT SEction
+#about > .container:first-of-type h2 {
+  background-color: var(--color-secondary); 
+  color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-block; 
+  margin-bottom: 1rem;
+}
+
+// 2) "HOW IT WORKS" blockquote section (inside #about)
+#about blockquote {
+  border-left: 6px solid var(--color-secondary);
+  background-color: var(--color-primary);
+  color: var(--accent-color);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+
+  strong {
+    color: var(--color-secondary);
+  }
+
+}
+
+// 3) MODERN CSS UNDER THE SPOTLIGHT
+main h2,
+main h3,
+main h4 {
+  background-color: var(--color-secondary); 
+  color: var(--color-primary);              
+  padding: 0.5rem 1.25rem;
+  border-left: 6px solid (var(--color-primary));
+  border-radius: 0.5rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+// 4) GUIDELINES
+#guidelines {
+  
+  color: var(--color-primary);
+
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+// 5) CONTRIBUTE (main container)
+#contribute > .container {
+  color: var(--color-primary);
+
+  a {
+    color: var(--color-primary);
+  }
+}
+
+// 6) SOURCE FILES 
+#files {
+  color: var(--color-primary);
+  padding: 2rem;
+  border-radius: 1rem;
+
+  a {
+    color: var(--color-primary);
+  }
+}
+
 
 // Added some responsive adjustments (add or adjust as we need)
 @media (max-width: 768px) {
@@ -425,10 +508,10 @@ nav {
 
   li {
     background: linear-gradient(to bottom right, #f4e2d8, #ba5370);
-    color: #fff;
+    color:var(--color-primary);
     margin-bottom: -12px; // Book stack overlap
     padding: 1rem 1.5rem;
-    border: 2px solid #6d4c41; // Book spine effect
+    border: 2px solid var(--color-background) ; // Book spine effect
     transform: rotate(-1deg);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -459,12 +542,13 @@ nav {
 // ===========================
 #books {
   padding: 2rem 1rem;
-  background-color: #fef9f3;
+  background-color: var(--color-primary);
   color: #333;
   font-family: sans-serif;
 
   h2 {
-    color: #8b4513;
+    color: var(--secondary-color); 
+    // 8b4513
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
@@ -476,8 +560,9 @@ nav {
     li {
       margin-bottom: 0.5rem;
       padding: 0.5rem;
-      border-left: 4px solid #8b4513;
-      background-color: #fff;
+      border-left: 4px solid var(--secondary-color);
+      // #8b4513
+      background-color: var(--color-primary);
     }
   }
 }
@@ -488,7 +573,10 @@ nav {
 .container {
   max-width: 900px;
   margin: 0 auto;
+
 }
+
+
 
 // =============================
 // Animated Book Shelf Section
