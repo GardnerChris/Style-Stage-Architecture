@@ -18,6 +18,82 @@
 }
 
 // ========================
+// Mixin
+// ========================
+
+// Book-like styling mixin
+@mixin book-style(
+  $width: 120px,
+  $height: 160px,
+  $bg-color: var(--secondary-color),
+  $accent-color: var(--accent-color),
+  $alt-color: var(--color-background),
+  $rotation: -8deg,
+  $font-size: 0.8rem,
+  $padding: 1rem 0.5rem
+) {
+  background: linear-gradient(to right, $bg-color 0%, $accent-color 15%, $accent-color 85%, $bg-color 100%);
+  width: $width;
+  height: $height;
+  border-radius: 0 8px 8px 0;
+  box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3), inset 3px 0 0 rgba(255, 255, 255, 0.1);
+  transform: rotate($rotation) translateY(0);
+  transition: all 0.4s ease;
+  position: relative;
+  
+  // Alternate book colors
+  &:nth-child(even) {
+    background: linear-gradient(to right, $alt-color 0%, #8b4513 15%, #8b4513 85%, $alt-color 100%);
+    transform: rotate(1deg) translateY(0);
+  }
+  
+  &:nth-child(3n) {
+    background: linear-gradient(to right, var(--color-secondary) 0%, #b82a2a 15%, #b82a2a 85%, var(--color-secondary) 100%);
+    transform: rotate(-1deg) translateY(0);
+  }
+  
+  // Hover effect
+  &:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.02);
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.4), inset 3px 0 0 rgba(255, 255, 255, 0.2);
+    z-index: 10;
+  }
+  
+  // Link styling like a book
+  a, span, div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: $padding;
+    color: var(--color-primary);
+    background: none;
+    font-weight: 700;
+    font-size: $font-size;
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+}
+
+// Responsive book mixin
+@mixin responsive-books($small-width: 80px, $small-height: 120px, $large-width: 140px, $large-height: 180px) {
+  
+  // Small screens
+  @media (max-width: 767px) {
+    @include book-style($small-width, $small-height, $font-size: 0.7rem, $padding: 0.8rem 0.3rem);
+  }
+  
+  // Large screens
+  @media (min-width: 1024px) {
+    @include book-style($large-width, $large-height, $font-size: 0.9rem, $padding: 1.5rem 0.8rem);
+  }
+}
+
+// ========================
 // Header- Styled to maintain library Theme
 // ========================
 header {
@@ -189,8 +265,8 @@ footer.page-footer {
     left: 0;
     right: 0;
     height: 8px;
-    
-  //found out repeating-linear-gradient is a great way to create a stripe effect.
+
+  // I found out repeating-linear-gradient is a great way to create a stripe effect-chris.
     background: repeating-linear-gradient(90deg,var(--secondary-color) 0px, var(--secondary-color) 20px,var(--color-background) 20px,var(--color-background) 40px);
     animation: slideStripe 3s linear infinite;
   }
@@ -206,51 +282,9 @@ footer.page-footer {
     gap: 0.5rem;
     flex-wrap: wrap;
     
-  // Book-like styling. 
+    // Book-like styling using mixin
     li {
-      background: linear-gradient(to right, var(--secondary-color) 0%, var(--accent-color) 15%, var(--accent-color) 85%, 
-      var(--secondary-color) 100%);
-      width: 120px;
-      height: 160px;
-      border-radius: 0 8px 8px 0;
-      box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2),0 4px 8px rgba(0, 0, 0, 0.3),inset 3px 0 0 rgba(255, 255, 255, 0.1);
-      transform: rotate(-8deg) translateY(0);
-      transition: all 0.4s ease;
-      position: relative;
-    
-      
-// Alternate books-took forever to figure out, haha but really happy with the result :))
-      &:nth-child(even) {
-        background: linear-gradient(to right, var(--color-background) 0%,#8b4513 15%,#8b4513 85%, var(--color-background) 100%);
-        transform: rotate(1deg) translateY(0);
-      }
-      
-      &:nth-child(3n) {
-        background: linear-gradient(to right, var(--color-secondary) 0%, #b82a2a 15%, #b82a2a 85%, var(--color-secondary) 100%);
-        transform: rotate(-1deg) translateY(0);
-      }
-
-      &:hover {
-        transform: rotate(0deg) translateY(-8px) scale(1.02);box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3),0 8px 16px rgba(0, 0, 0, 0.4),inset 3px 0 0 rgba(255, 255, 255, 0.2);z-index: 10;
-      }
-      
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        padding: 1rem 0.5rem;
-        color: var(--color-primary);
-        background: none;
-        font-weight: 700;
-        font-size: 0.8rem;
-        text-align: center;
-        line-height: 1.3;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-      }
+      @include book-style();
     }
   }
   
@@ -664,14 +698,7 @@ nav {
       gap: 0.5rem;
       
       li {
-        width: 140px;
-        height: 180px;
-        
-        a {
-          font-size: 0.9rem;
-          padding: 1.5rem 0.8rem;
-          line-height: 1.4;
-        }
+        @include responsive-books();
       }
     }
     
@@ -732,14 +759,7 @@ nav {
       gap: 0.3rem;
       
       li {
-        width: 80px;
-        height: 120px;
-        
-        a {
-          font-size: 0.7rem;
-          padding: 0.8rem 0.3rem;
-          line-height: 1.2;
-        }
+        @include responsive-books();
       }
     }
     
@@ -788,14 +808,7 @@ nav {
         justify-content: center;
         
         li {
-          width: 60px;
-          height: 90px;
-          
-          a {
-            font-size: 0.6rem;
-            padding: 0.5rem 0.2rem;
-            line-height: 1.1;
-          }
+          @include book-style(60px, 90px, $font-size: 0.6rem, $padding: 0.5rem 0.2rem);
         }
       }
       
